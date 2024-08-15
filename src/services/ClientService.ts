@@ -20,6 +20,6 @@ export const getTopClient = async (): Promise<TopClientResponse> => {
         return response.data;
     } catch (e) {
         console.log(e);
-        throw new Error('Failed to get top clients');
+        throw new Error('Failed to get top value clients');
     }
 }

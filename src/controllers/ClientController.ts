@@ -5,6 +5,6 @@ export const getAllClients = async (req: express.Request, res: express.Response)
     res.render('clientList.html', {clients: await getClients()})
 }
 
-export const getHighestValueClient = async(req: express.Request, res: express.Response): Promise<void> => {
+export const getTopValueClient = async(req: express.Request, res: express.Response): Promise<void> => {
     res.render("topClient.html", {topClient: await getTopClient()})
 }
