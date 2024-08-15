@@ -18,8 +18,11 @@
     <input type="number" id="value" name="value" value="{{value}}">
 
     <h3><label for="status">Status:</label></h3>
-    <p>Choose from TODO, INPROGRESS, COMPLETED</p>
-    <input type="text" id="status" name="status" value="{{status}}">
+    <select name="status" id="status">
+      <option value="TODO">TODO</option>
+      <option value="INPROGRESS">INPROGRESS</option>
+      <option value="COMPLETED">COMPLETED</option>
+    </select>
 
     <h3><label for="clientId">clientId:</label></h3>
     <input type="number" id="clientId" name="clientId" value="{{clientId}}">
