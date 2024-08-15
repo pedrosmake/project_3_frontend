@@ -10,7 +10,7 @@ export const getLoginForm = async (req: express.Request, res: express.Response):
 export const postLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
         req.session.token = await getToken(req.body);
-        res.redirect('/orders');
+        res.redirect('/home');
     } catch (e) {
         res.locals.errormessage = e.message;
         res.render('loginForm.html', req.body);
@@ -29,4 +29,8 @@ export const postRegisterForm = async (req: express.Request, res: express.Respon
         res.locals.errormessage = e.message;
         res.render('registerForm.html', req.body);
     }
+}
+
+export const getHomePage = async (req: express.Request, res: express.Response): Promise<void> => {
+    res.render('index.html');
 }

@@ -11,6 +11,7 @@ import { getAllClients, getTopValueClient } from "./controllers/ClientController
 import { getTopClient } from "./services/ClientService";
 import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
 import { createEmployee } from "./services/EmployeeService";
+import { getHomePage, getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
 
 const app = express();
 
@@ -27,8 +28,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(session({ secret: 'SUPER_SECRET',
-    cookie: { maxAge: 28800000},
-   saveUninitialized: true}));
+    cookie: { maxAge: 28800000}
+}));
 
 declare module "express-session"{
    interface SessionData {
@@ -50,6 +51,14 @@ app.post('/employees/salesEmployeeForm', postSalesEmployeeForm);
 app.get('/projectForm', getProjectForm);
 app.post('/projectForm', postProjectForm);
 app.get('/projects/:id', getSingleProject);
+
+app.get('/loginForm', getLoginForm)
+app.post('/loginForm', postLoginForm)
+
+app.get('/registerForm', getRegisterForm)
+app.post('/registerForm', postRegisterForm)
+
+app.get('/home', getHomePage);
 
 app.listen(3000, () =>{
     console.log('Server started on port 3000');
