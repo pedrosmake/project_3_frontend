@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Delivery Employee List
+        </title>
+    </head>
+    <body>
+        <h1>Delivery Employees</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Bank Account</th>
+                <th>Insurance Number</th>
+            </tr>
+            {% for employee in employees %}
+                <tr>
+                    <td>>{{employee.name}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>{{employee.bankAccount}}</td>
+                    <td>{{employee.insuranceNumber}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

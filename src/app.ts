@@ -4,9 +4,9 @@ import { getProjectForm, getSingleProject, postProjectForm } from "./controllers
 import { dateFilter } from "./filter/DateFilters";
 import bodyParser from "body-parser";
 import session from "express-session";
-import { getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
-import { allowRoles } from "./middleware/AuthMiddleware";
-import { UserRole } from "./models/JwtToken";
+import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
+import { createEmployee } from "./services/EmployeeService";
+
 
 const app = express();
 
@@ -31,6 +31,14 @@ declare module "express-session"{
        token: string;
    }
 }
+
+app.get('/employees/delivery', getAllDeliveryEmployees);
+app.get('/employees/sales', getAllSalesEmployees);
+app.get('/employees/employeeForm', getEmployeeForm);
+app.get('/employees/salesEmployeeForm', getSalesEmployeeForm);
+
+app.post('/employees/employeeForm', postEmployeeForm);
+app.post('/employees/salesEmployeeForm', postSalesEmployeeForm);
 
 app.get('/projectForm', getProjectForm);
 app.post('/projectForm', postProjectForm);
