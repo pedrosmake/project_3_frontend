@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
 import { createEmployee } from "./services/EmployeeService";
+import { getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
 
 
 const app = express();
@@ -23,8 +24,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(session({ secret: 'SUPER_SECRET',
-    cookie: { maxAge: 28800000},
-   saveUninitialized: true}));
+    cookie: { maxAge: 28800000}
+}));
 
 declare module "express-session"{
    interface SessionData {
@@ -43,6 +44,12 @@ app.post('/employees/salesEmployeeForm', postSalesEmployeeForm);
 app.get('/projectForm', getProjectForm);
 app.post('/projectForm', postProjectForm);
 app.get('/projects/:id', getSingleProject);
+
+app.get('/loginForm', getLoginForm)
+app.post('/loginForm', postLoginForm)
+
+app.get('/registerForm', getRegisterForm)
+app.get('/registerForm', postRegisterForm)
 
 app.listen(3000, () =>{
     console.log('Server started on port 3000');
