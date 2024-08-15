@@ -1,18 +1,10 @@
 import express from "express";
-import { createProject } from "../services/ProjectService";
-import { getCustomers } from "../services/ClientService";
+import { createProject, getProjectById } from "../services/ProjectService";
 
-// export const getAllOrders =  async (req: express.Request, res: express.Response): Promise<void> => {
-//     res.render('orderList.html', {orders: await getOrders() });
-// }
 
-// export const getSingleOrder = async (req: express.Request, res: express.Response): Promise<void> => {
-//     res.render('orderDetail.html' , { order: await getOrderById(req.params.id)});
-// }
-
-// export const getOrderForm = async (req: express.Request, res: express.Response): Promise<void> => {
-//     res.render('orderForm.html', {customers: await getCustomers()});
-// }
+export const getSingleProject = async (req: express.Request, res: express.Response): Promise<void> => {
+    res.render('projectDetail.html', { project: await getProjectById(req.params.id) })
+}
 
 export const getProjectForm = async (req: express.Request, res: express.Response): Promise<void> => {
     res.render('projectForm.html');

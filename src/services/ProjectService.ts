@@ -4,15 +4,15 @@ import { ProjectRequest } from "../models/ProjectRequest";
 import { Project } from "../models/Project";
 // import { getHeader } from "./AuthUtil";
 
-export const getProjects = async (): Promise<ProjectResponse[]> => {
-    try {
-        const response: AxiosResponse = await axios.get("http://localhost:8080/api/projects");
-        return response.data;
-    } catch (e) {
-        console.log(e);
-        throw new Error('Failed to get orders');
-    }
-}
+// export const getProjects = async (): Promise<ProjectResponse[]> => {
+//     try {
+//         const response: AxiosResponse = await axios.get("http://localhost:8080/api/projects");
+//         return response.data;
+//     } catch (e) {
+//         console.log(e);
+//         throw new Error('Failed to get orders');
+//     }
+// }
 
 export const getProjectById = async(id: String ): Promise<Project> => {
     try {
