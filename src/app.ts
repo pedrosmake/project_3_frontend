@@ -4,7 +4,7 @@ import { getProjectForm, getSingleProject, postProjectForm } from "./controllers
 import { dateFilter } from "./filter/DateFilters";
 import bodyParser from "body-parser";
 import session from "express-session";
-import { getAllDelivery, getAllSales, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
+import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
 import { createEmployee } from "./services/EmployeeService";
 
 
@@ -32,8 +32,8 @@ declare module "express-session"{
    }
 }
 
-app.get('/employees/delivery', getAllDelivery);
-app.get('/employees/sales', getAllSales);
+app.get('/employees/delivery', getAllDeliveryEmployees);
+app.get('/employees/sales', getAllSalesEmployees);
 app.get('/employees/employeeForm', getEmployeeForm);
 app.get('/employees/salesEmployeeForm', getSalesEmployeeForm);
 

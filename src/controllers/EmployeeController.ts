@@ -1,12 +1,12 @@
 import express from "express";
 import { createEmployee, createSalesEmployee, getDeliveryEmployees, getSalesEmployees } from "../services/EmployeeService";
 
-export const getAllDelivery =  async (req: express.Request, res: express.Response): Promise<void> => {
+export const getAllDeliveryEmployees =  async (req: express.Request, res: express.Response): Promise<void> => {
     
         res.render('deliveryEmployeeList.html', {employees: await getDeliveryEmployees()});
 }
 
-export const getAllSales =  async (req: express.Request, res: express.Response): Promise<void> => {
+export const getAllSalesEmployees =  async (req: express.Request, res: express.Response): Promise<void> => {
     
     res.render('salesEmployeeList.html', {employees: await getSalesEmployees()});
 }
