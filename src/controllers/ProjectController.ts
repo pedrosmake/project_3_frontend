@@ -1,25 +1,21 @@
 import express from "express";
-import { getOrderById, getOrders, createOrder } from "../services/ProjectService";
-import { getCustomers } from "../services/ClientService";
+import { createProject, getProjectById } from "../services/ProjectService";
 
-export const getAllOrders =  async (req: express.Request, res: express.Response): Promise<void> => {
-    res.render('orderList.html', {orders: await getOrders(req.session.token) });
+
+export const getSingleProject = async (req: express.Request, res: express.Response): Promise<void> => {
+    res.render('projectDetail.html', { project: await getProjectById(req.params.id) })
 }
 
-export const getSingleOrder = async (req: express.Request, res: express.Response): Promise<void> => {
-    res.render('orderDetail.html' , { order: await getOrderById(req.params.id , req.session.token)});
+export const getProjectForm = async (req: express.Request, res: express.Response): Promise<void> => {
+    res.render('projectForm.html');
 }
 
-export const getOrderForm = async (req: express.Request, res: express.Response): Promise<void> => {
-    res.render('orderForm.html', {customers: await getCustomers()});
-}
-
-export const postOrderForm = async (req: express.Request, res: express.Response): Promise<void> => {
+export const postProjectForm = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
-        const id = await createOrder(req.body);
-        res.redirect('/orders/' + id);
+        const id = await createProject(req.body);
+        res.redirect('/projects/' + id)
     } catch (e) {
         res.locals.errormessage = e.message;
-        res.render('orderForm.html', req.body);
+        res.render('projectForm.html', req.body);
     }
 }

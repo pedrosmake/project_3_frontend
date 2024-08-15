@@ -1,6 +1,6 @@
 import express from "express";
 import nunjucks from "nunjucks";
-import { getAllOrders, getOrderForm, getSingleOrder, postOrderForm } from "./controllers/ProjectController";
+import { getProjectForm, getSingleProject, postProjectForm } from "./controllers/ProjectController";
 import { dateFilter } from "./filter/DateFilters";
 import bodyParser from "body-parser";
 import session from "express-session";
@@ -37,9 +37,10 @@ declare module "express-session"{
 app.get('/clients', getAllClients)
 app.get('/clients/top', getHighestValueClient)
 
+app.get('/projectForm', getProjectForm);
+app.post('/projectForm', postProjectForm);
+app.get('/projects/:id', getSingleProject);
 
 app.listen(3000, () =>{
     console.log('Server started on port 3000');
 })
-
-
