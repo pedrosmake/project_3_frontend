@@ -7,7 +7,7 @@ import session from "express-session";
 import { getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
 import { allowRoles } from "./middleware/AuthMiddleware";
 import { UserRole } from "./models/JwtToken";
-import { getAllClients, getHighestValueClient } from "./controllers/ClientController";
+import { getAllClients, getTopValueClient } from "./controllers/ClientController";
 import { getTopClient } from "./services/ClientService";
 import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
 import { createEmployee } from "./services/EmployeeService";
@@ -37,7 +37,7 @@ declare module "express-session"{
 }
 
 app.get('/clients', getAllClients)
-app.get('/clients/top', getHighestValueClient)
+app.get('/clients/top', getTopValueClient)
 
 app.get('/employees/delivery', getAllDeliveryEmployees);
 app.get('/employees/sales', getAllSalesEmployees);
