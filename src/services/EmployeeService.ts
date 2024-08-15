@@ -1,35 +1,42 @@
 import axios, { AxiosResponse } from "axios";
-import { Product } from "../models/Product";
-import { ProductRequest } from "../models/ProductRequest";
-import { getToken } from "./AuthService";
-import { getHeader } from "./AuthUtil";
+import { EmployeeResponse } from "../models/EmployeeResponse";
+import { SalesEmployeeResponse } from "../models/SalesEmployeeResponse";
+import { EmployeeRequest } from "../models/EmployeeRequest";
+import { SalesEmployeeRequest } from "../models/SalesEmployeeRequest";
 
-export const getProducts = async (token: String): Promise<Product[]> => {
+export const getDeliveryEmployees = async (): Promise<EmployeeResponse[]> => {
     try {
-        const response: AxiosResponse = await axios.get("http://localhost:8080/api/products", getHeader(token));
+        const response: AxiosResponse = await axios.get("http://localhost:8080/api/employees/delivery");
         return response.data;
     } catch (e) {
         console.log(e);
-        throw new Error('Failed to get products');
+        throw new Error('Failed to get deliver employees');
     }
 }
 
-
-export const getProductById = async(id: String, token: String): Promise<Product> => {
+export const getSalesEmployees = async (): Promise<SalesEmployeeResponse[]> => {
     try {
-        const response: AxiosResponse = await axios.get("http://localhost:8080/api/products/" + id, getHeader(token));
-
+        const response: AxiosResponse = await axios.get("http://localhost:8080/api/employees/sales");
         return response.data;
     } catch (e) {
         console.log(e);
-        throw new Error('Failed to get product');
+        throw new Error('Failed to get sales employees');
     }
-    
 }
 
-export const createProduct = async (product: ProductRequest, token: String): Promise<Number> => {
+export const createEmployee = async (employee: EmployeeRequest): Promise<Number> => {
     try {
-        const response: AxiosResponse = await axios.post("http://localhost:8080/api/products", product, getHeader(token));
+        const response: AxiosResponse = await axios.post("http://localhost:8080/api/employees/delivery", employee);
+        return response.data;
+    } catch (e) {
+        console.log(e);
+        throw new Error(e.response.data);
+    }
+}
+
+export const createSalesEmployee = async (employee: SalesEmployeeRequest): Promise<Number> => {
+    try {
+        const response: AxiosResponse = await axios.post("http://localhost:8080/api/employees/sales", employee);
         return response.data;
     } catch (e) {
         console.log(e);

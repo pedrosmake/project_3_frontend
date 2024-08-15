@@ -9,6 +9,8 @@ import { allowRoles } from "./middleware/AuthMiddleware";
 import { UserRole } from "./models/JwtToken";
 import { getAllClients, getHighestValueClient } from "./controllers/ClientController";
 import { getTopClient } from "./services/ClientService";
+import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
+import { createEmployee } from "./services/EmployeeService";
 
 const app = express();
 
@@ -36,6 +38,14 @@ declare module "express-session"{
 
 app.get('/clients', getAllClients)
 app.get('/clients/top', getHighestValueClient)
+
+app.get('/employees/delivery', getAllDeliveryEmployees);
+app.get('/employees/sales', getAllSalesEmployees);
+app.get('/employees/employeeForm', getEmployeeForm);
+app.get('/employees/salesEmployeeForm', getSalesEmployeeForm);
+
+app.post('/employees/employeeForm', postEmployeeForm);
+app.post('/employees/salesEmployeeForm', postSalesEmployeeForm);
 
 app.get('/projectForm', getProjectForm);
 app.post('/projectForm', postProjectForm);
