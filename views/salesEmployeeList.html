@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Sales Employee List
+        </title>
+    </head>
+    <body>
+        <h1>Sales Employees</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Bank Account</th>
+                <th>Insurance Number</th>
+                <th>Commission Rate</th>
+            </tr>
+            {% for salesEmployee in employees %}
+                <tr>
+                    <td>>{{salesEmployee.name}}</td>
+                    <td>{{salesEmployee.salary}}</td>
+                    <td>{{salesEmployee.bankAccount}}</td>
+                    <td>{{salesEmployee.insuranceNumber}}</td>
+                    <td>{{salesEmployee.commissionRate}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
