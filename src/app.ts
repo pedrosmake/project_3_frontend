@@ -1,32 +1,40 @@
 import express from "express";
 import nunjucks from "nunjucks";
+import { getAllOrders, getOrderForm, getSingleOrder, postOrderForm } from "./controllers/ProjectController";
+import { dateFilter } from "./filter/DateFilters";
 import bodyParser from "body-parser";
 import session from "express-session";
-
-import { getAllDatabases } from "./controllers/TestController";
+import { getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
+import { allowRoles } from "./middleware/AuthMiddleware";
+import { UserRole } from "./models/JwtToken";
 
 const app = express();
 
-nunjucks.configure('views', {
+const env = nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
 
-app.use(bodyParser.json())
+env.addFilter('date', dateFilter);
+
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
-}))
+    extended: true
+}));
 
-app.use(session({ secret: 'SUPER_SECRET', cookie: { maxAge: 28800000 }}));
+app.use(session({ secret: 'SUPER_SECRET',
+    cookie: { maxAge: 28800000},
+   saveUninitialized: true}));
 
-declare module "express-session" {
-  interface SessionData {
-    token: string;
-  }
+declare module "express-session"{
+   interface SessionData {
+       token: string;
+   }
 }
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
-});
 
-app.get('/', getAllDatabases);
+app.listen(3000, () =>{
+    console.log('Server started on port 3000');
+})
+
+

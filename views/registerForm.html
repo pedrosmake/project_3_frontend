@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <h1>Register</h1>
+
+        {% if errormessage %}
+            <h3>{{ errormessage }}</h3>
+        {% endif %}
+
+        <form class="form" action="/registerForm" method="post">
+            <h3><label for="username">
+                Username:
+            </label></h3>
+            <input id="username" name="username" value = "{{username}}" type="text">
+            
+
+            <h3><label for="password">
+                Passsword:
+            </label></h3>
+            <input id="password" name="password" value = "{{password}}" type="text">
+
+            <h3><label for="repeatPassword">
+                Passsword:
+            </label></h3>
+            <input id="repeatPassword" name="repeatPassword" value = "{{repeatPassword}}" type="text">
+            
+            
+            </br></br>
+            <button id ="submit">Submit</button>
+
+        </form>
+    </body>
+</html>
