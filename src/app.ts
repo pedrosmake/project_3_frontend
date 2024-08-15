@@ -7,6 +7,8 @@ import session from "express-session";
 import { getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
 import { allowRoles } from "./middleware/AuthMiddleware";
 import { UserRole } from "./models/JwtToken";
+import { getAllClients, getHighestValueClient } from "./controllers/ClientController";
+import { getTopClient } from "./services/ClientService";
 
 const app = express();
 
@@ -31,6 +33,9 @@ declare module "express-session"{
        token: string;
    }
 }
+
+app.get('/clients', getAllClients)
+app.get('/clients/top', getHighestValueClient)
 
 
 app.listen(3000, () =>{
