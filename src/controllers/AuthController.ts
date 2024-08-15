@@ -30,3 +30,7 @@ export const postRegisterForm = async (req: express.Request, res: express.Respon
         res.render('registerForm.html', req.body);
     }
 }
+
+export const getHomePage = async (req: express.Request, res: express.Response): Promise<void> => {
+    res.render('index.html');
+}
