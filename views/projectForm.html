@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create project</title>
+</head>
+<body>
+  <h1>Create project</h1>
+  {% if errormessage %}
+    <h3>{{errormessage}}</h3>
+  {% endif %}
+  <form action="/projectForm" class="form" method="post">
+    <h3><label for="name">Name:</label></h3>
+    <input type="text" id="name" name="name" value="{{name}}">
+
+    <h3><label for="value">Value:</label></h3>
+    <input type="number" id="value" name="value" value="{{value}}">
+
+    <h3><label for="status">Status:</label></h3>
+    <select name="status" id="status">
+      <option value="TODO">TODO</option>
+      <option value="INPROGRESS">INPROGRESS</option>
+      <option value="COMPLETED">COMPLETED</option>
+    </select>
+
+    <h3><label for="clientId">clientId:</label></h3>
+    <input type="number" id="clientId" name="clientId" value="{{clientId}}">
+
+    <h3><label for="techleadId">techleadId:</label></h3>
+    <input type="number" id="techleadId" name="techleadId" value="{{techleadId}}">
+
+    </br></br>
+    <button id="submit">Submit</button>
+  </form>
+
+</body>
+</html>
