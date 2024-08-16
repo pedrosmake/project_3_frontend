@@ -1,17 +1,12 @@
+import bodyParser from "body-parser";
 import express from "express";
+import session from "express-session";
 import nunjucks from "nunjucks";
+import { getHomePage, getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
+import { getAllClients, getTopValueClient } from "./controllers/ClientController";
+import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
 import { getProjectForm, getSingleProject, postProjectForm } from "./controllers/ProjectController";
 import { dateFilter } from "./filter/DateFilters";
-import bodyParser from "body-parser";
-import session from "express-session";
-import { getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
-import { allowRoles } from "./middleware/AuthMiddleware";
-import { UserRole } from "./models/JwtToken";
-import { getAllClients, getTopValueClient } from "./controllers/ClientController";
-import { getTopClient } from "./services/ClientService";
-import { getAllDeliveryEmployees, getAllSalesEmployees, getEmployeeForm, getSalesEmployeeForm, postEmployeeForm, postSalesEmployeeForm } from "./controllers/EmployeeController";
-import { createEmployee } from "./services/EmployeeService";
-import { getHomePage, getLoginForm, getRegisterForm, postLoginForm, postRegisterForm } from "./controllers/AuthController";
 
 const app = express();
 
